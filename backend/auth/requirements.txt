@@ -1,0 +1,34 @@
+# Backend principal
+fastapi==0.110.2  # Actualizado para compatibilidad con Starlette
+uvicorn[standard]==0.29.0
+
+# MySQL y MongoDB
+pymysql==1.1.0
+pymongo==4.13.2
+
+# ORM (opcional para futuras entidades)
+SQLAlchemy==2.0.41
+
+# Validación y serialización
+pydantic==2.11.7
+pydantic_core==2.33.2
+annotated-types==0.7.0
+typing-inspection==0.4.1
+typing_extensions==4.14.0
+
+# Seguridad y autenticación
+bcrypt==4.1.2
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+cryptography==42.0.5
+
+# Utilidades y dependencias comunes
+anyio==4.9.0
+sniffio==1.3.1
+click==8.2.1
+colorama==0.4.6
+dnspython==2.7.0
+h11==0.16.0
+greenlet==3.2.3
+idna==3.10
+starlette==0.37.2  # Versión compatible con FastAPI 0.110.2

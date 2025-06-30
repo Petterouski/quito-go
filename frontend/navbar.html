@@ -1,0 +1,18 @@
+<!-- frontend/components/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">QuitoGO</a>
+    <div>
+      <a class="btn btn-outline-secondary me-2" href="packages.html">Paquetes</a>
+      <a class="btn btn-outline-secondary me-2" href="reservations.html">Reservas</a>
+      <a class="btn btn-outline-secondary me-2" href="login.html">Login</a>
+      <a class="btn btn-outline-danger" href="#" onclick="logout()">Salir</a>
+    </div>
+  </div>
+</nav>
+<script>
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+  }
+</script>
