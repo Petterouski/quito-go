@@ -43,3 +43,20 @@ docker-compose build
 ```bash
 docker-compose up
 ```
+
+### Paso 4: Verificar la ejecución
+
+Usando Fábrica A
+Operación desde Producto A
+
+Usando Fábrica B
+Operación desde Producto B
+
+### Paso 5: Detener el contenedor
+
+```bash
+docker-compose down
+```
+
+
+## 🛠️ Gracias por leer
