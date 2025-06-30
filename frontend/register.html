@@ -1,35 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>QuitoGO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CDN -->
+  <!-- Configuración básica del documento HTML -->
+  <meta charset="UTF-8"> <!-- Codificación de caracteres en UTF-8 -->
+  <title>QuitoGO</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea responsive en dispositivos móviles -->
+
+  <!-- Enlace a la hoja de estilos Bootstrap desde CDN para estilos predefinidos y componentes responsivos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Enlace a hoja de estilos personalizada (puede contener estilos propios) -->
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body class="container py-5">
-  <!-- Contenido de cada página aquí -->
+  <!-- Contenedor principal usando clases de Bootstrap para centrado y padding vertical -->
+
+  <!-- Contenedor donde se cargará de manera dinámica el menú de navegación -->
   <div id="navbar"></div>
+
+  <!-- Script para cargar el contenido del menú de navegación desde un archivo externo -->
   <script>
+    // Realiza una solicitud fetch para obtener el archivo 'navbar.html'
     fetch("components/navbar.html")
-      .then(res => res.text())
+      .then(res => res.text()) // Convierte la respuesta en texto
       .then(html => {
+        // Inserta el contenido HTML del archivo en el div con id 'navbar'
         document.getElementById("navbar").innerHTML = html;
       });
   </script>
 
+  <!-- Título de la sección de registro de usuario -->
   <h2>Registro de Usuario</h2>
+
+  <!-- Formulario para registro de nuevos usuarios -->
   <form id="registerForm">
-    <input type="email" class="form-control mb-3" id="email" placeholder="Email" required>
-    <input type="password" class="form-control mb-3" id="password" placeholder="Contraseña" required>
+    <!-- Campo de entrada para el email -->
+    <input 
+      type="email" 
+      class="form-control mb-3"  
+      id="email"                 
+      placeholder="Email"       
+      required               
+    >
+
+    <!-- Campo de entrada para contraseña -->
+    <input 
+      type="password" 
+      class="form-control mb-3" 
+      id="password" 
+      placeholder="Contraseña" 
+      required
+    >
+
+    <!-- Botón para enviar el formulario -->
     <button type="submit" class="btn btn-success">Registrarse</button>
   </form>
+
+  <!-- Contenedor para mostrar mensajes de éxito o error -->
   <div id="message" class="mt-3"></div>
+
+  <!-- Script que contiene la lógica de autenticación y registro (se debe crear en js/auth.js) -->
   <script src="js/auth.js"></script>
-  <!-- Bootstrap y tu JS -->
+
+  <!-- Scripts de Bootstrap y otros scripts propios -->
+  <!-- Bootstrap JS Bundle que incluye Popper para componentes interactivos -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script adicional, por ejemplo, para manejo de otras funciones -->
   <script src="js/ARCHIVO.js"></script>
 </body>
 </html>

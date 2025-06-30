@@ -1,18 +1,54 @@
 <!-- frontend/components/navbar.html -->
+<!--
+  Este archivo contiene la estructura HTML de una barra de navegación para la interfaz frontend.
+  Utiliza Bootstrap para estilos y diseño responsive.
+  
+  Sección principal:
+  - `<nav>`: define la barra de navegación con clases Bootstrap para estilos y comportamiento responsive.
+  - `<div class="container-fluid">`: envuelve los elementos internos para un diseño fluido y adaptado.
+  - `<a class="navbar-brand" href="index.html">QuitoGO</a>`: enlace que funciona como marca o logo, redirigiendo a la página principal.
+  
+  Botones de navegación:
+  - Botón "Paquetes": navega a `packages.html`.
+  - Botón "Reservas": navega a `reservations.html`.
+  - Botón "Login": navega a `login.html`.
+  - Botón "Salir": llama a la función `logout()` para cerrar sesión y redirige a la página principal.
+
+  Script JavaScript:
+  - Función `logout()`: elimina la token de autenticación almacenada en `localStorage` y redirige a la página principal (`index.html`).
+-->
+
+<!-- Barra de navegación usando Bootstrap -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <!-- Contenedor fluido para adaptar el contenido -->
   <div class="container-fluid">
+    <!-- Marca o logo de la aplicación, enlaza a la página principal -->
     <a class="navbar-brand" href="index.html">QuitoGO</a>
+    <!-- Contenedor de botones de navegación -->
     <div>
+      <!-- Botón para acceder a la sección de paquetes -->
       <a class="btn btn-outline-secondary me-2" href="packages.html">Paquetes</a>
+      <!-- Botón para acceder a las reservas -->
       <a class="btn btn-outline-secondary me-2" href="reservations.html">Reservas</a>
+      <!-- Botón para iniciar sesión -->
       <a class="btn btn-outline-secondary me-2" href="login.html">Login</a>
+      <!-- Botón para cerrar sesión; llama a la función logout() -->
       <a class="btn btn-outline-danger" href="#" onclick="logout()">Salir</a>
     </div>
   </div>
 </nav>
+
+<!-- Script para gestionar el cierre de sesión -->
 <script>
+  /**
+   * Función para cerrar la sesión del usuario.
+   * Elimina el token de autenticación almacenado en localStorage
+   * y redirige al usuario a la página principal.
+   */
   function logout() {
+    // Elimina el token de autenticación del almacenamiento local
     localStorage.removeItem("token");
+    // Redirige al usuario a la página principal
     window.location.href = "index.html";
   }
 </script>

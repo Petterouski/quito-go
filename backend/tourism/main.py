@@ -1,15 +1,16 @@
 from fastapi import FastAPI
 from app.controllers import package_controller, reservation_controller
-from app.controllers import auth_controller  # si ya lo moviste aquí
+from app.controllers import auth_controller  # Importa el controlador de autenticación (registro y login)
+from fastapi.staticfiles import StaticFiles  # Para servir archivos estáticos del frontend
 
-from fastapi.staticfiles import StaticFiles
-
+# Crear instancia de la aplicación FastAPI
 app = FastAPI()
 
-# Rutas
-app.include_router(package_controller.router)
-app.include_router(reservation_controller.router)
-app.include_router(auth_controller.router)  # Registro y login
+# Incluir las rutas definidas en los controladores
+app.include_router(package_controller.router)  # Rutas relacionadas con paquetes
+app.include_router(reservation_controller.router)  # Rutas relacionadas con reservaciones
+app.include_router(auth_controller.router)  # Rutas para autenticación (registro y login)
 
-# Frontend
+# Servir la interfaz frontend desde la carpeta 'frontend'
+# Esto hace que la interfaz esté accesible en la raíz del servidor
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")

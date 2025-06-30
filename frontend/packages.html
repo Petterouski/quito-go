@@ -4,36 +4,62 @@
   <meta charset="UTF-8">
   <title>QuitoGO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CDN -->
+  
+  <!-- Enlace a la hoja de estilos de Bootstrap a través de CDN para un diseño responsivo y componentes predefinidos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Enlace a tu hoja de estilos personalizada ubicada en la carpeta css -->
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body class="container py-5">
-  <!-- Contenido de cada página aquí -->
+  <!-- Contenedor principal de la página con clases de Bootstrap para agregar padding vertical -->
+
+  <!-- Sección donde se cargará dinámicamente la barra de navegación -->
   <div id="navbar"></div>
+  
+  <!-- Script para cargar el contenido del componente navbar.html de forma asíncrona -->
   <script>
+    // Fetch solicita el archivo navbar.html
     fetch("components/navbar.html")
-      .then(res => res.text())
+      .then(res => res.text()) // Convierte la respuesta en texto
       .then(html => {
+        // Inserta el HTML obtenido en el div con id "navbar"
         document.getElementById("navbar").innerHTML = html;
       });
   </script>
 
+  <!-- Título de la sección principal -->
   <h2>Gestión de Paquetes</h2>
+  
+  <!-- Contenedor donde se mostrarán los paquetes existentes -->
   <div id="packages" class="mb-4"></div>
 
+  <!-- Formulario para crear un nuevo paquete -->
   <form id="createPackageForm">
-    <input class="form-control mb-2" id="destination" placeholder="Destino">
-    <input class="form-control mb-2" id="duration" type="number" placeholder="Duración (días)">
-    <input class="form-control mb-2" id="price" type="number" step="0.01" placeholder="Precio">
-    <input class="form-control mb-2" id="capacity" type="number" placeholder="Cupo">
+    <!-- Campo de entrada para el destino del paquete -->
+    <input class="form-control mb-2" id="destination" placeholder="Destino" required>
+    
+    <!-- Campo de entrada para la duración en días -->
+    <input class="form-control mb-2" id="duration" type="number" placeholder="Duración (días)" required>
+    
+    <!-- Campo de entrada para el precio del paquete -->
+    <input class="form-control mb-2" id="price" type="number" step="0.01" placeholder="Precio" required>
+    
+    <!-- Campo de entrada para la capacidad o cupo disponible -->
+    <input class="form-control mb-2" id="capacity" type="number" placeholder="Cupo" required>
+    
+    <!-- Botón para enviar el formulario y crear el paquete -->
     <button type="submit" class="btn btn-success">Crear</button>
   </form>
+  
+  <!-- Script que gestiona la lógica de los paquetes, incluido cargar, agregar, eliminar -->
   <script src="js/packages.js"></script>
 
-  <!-- Bootstrap y tu JS -->
+  <!-- Scripts necesarios de Bootstrap para componentes interactivos -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Script adicional, posiblemente para otras funcionalidades específicas de la página -->
   <script src="js/ARCHIVO.js"></script>
 </body>
 </html>

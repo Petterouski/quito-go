@@ -1,17 +1,27 @@
+# Estilo para el cuerpo del documento
 body {
+  /* Color de fondo suave en tonos azules claros */
   background: #f5f9ff;
+  /* Fuente utilizada en todo el cuerpo de la página */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Estilo para los encabezados h1 y h2 */
 h1, h2 {
+  /* Color azul oscuro para los títulos */
   color: #00427a;
 }
 
+/* Estilo para elementos con clases 'card' y 'border' */
 .card, .border {
+  /* Bordes redondeados en las esquinas */
   border-radius: 10px;
+  /* Sombra sutil para dar profundidad */
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Estilo para botones */
 .btn {
+  /* Bordes redondeados para un aspecto más moderno */
   border-radius: 8px;
 }

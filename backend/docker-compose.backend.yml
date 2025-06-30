@@ -1,62 +1,71 @@
-version: "3.9"
+# Archivo Docker Compose para Orquestar Servicios en un Entorno Multi-Contenedor
+
+version: "3.9"  # Especifica la versión del esquema de Docker Compose
 
 services:
+  # Servicio de Autenticación
   auth:
     build:
-      context: ./auth
-    container_name: auth_service
+      context: ./auth  # Directorio donde se encuentra el Dockerfile para el servicio auth
+    container_name: auth_service  # Nombre del contenedor para fácil identificación
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Mapea el puerto 8000 del host al puerto 8000 del contenedor
     networks:
-      - backend_net
+      - backend_net  # Conecta este servicio a la red personalizada 'backend_net'
 
+  # Servicio de Turismo
   tourism:
     build:
-      context: ./tourism
-    container_name: tourism_service
+      context: ./tourism  # Directorio donde se encuentra el Dockerfile para el servicio tourism
+    container_name: tourism_service  # Nombre del contenedor
     ports:
-      - "8001:8001"
+      - "8001:8001"  # Mapea el puerto 8001 del host al puerto 8001 del contenedor
     depends_on:
-      - mysql
-      - mongo
+      - mysql  # Asegura que el servicio MySQL esté iniciado antes de iniciar tourism
+      - mongo  # Asegura que el servicio MongoDB esté iniciado antes de tourism
     environment:
+      # Variables de entorno para la conexión a las bases de datos
       - DB_HOST=mysql
       - DB_USER=root
       - DB_PASSWORD=root
       - DB_NAME=quitogo_db
       - MONGO_URL=mongodb://mongo:27017/
     networks:
-      - backend_net
+      - backend_net  # Conecta a la misma red que auth y bases de datos
 
+  # Servicio de Base de Datos MySQL
   mysql:
-    image: mysql:8.0
-    container_name: mysql_container
-    restart: always
+    image: mysql:8.0  # Imagen oficial de MySQL versión 8.0
+    container_name: mysql_container  # Nombre del contenedor
+    restart: always  # Reinicia automáticamente si se detiene
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: quitogo_db
+      MYSQL_ROOT_PASSWORD: root  # Contraseña para el usuario root
+      MYSQL_DATABASE: quitogo_db  # Base de datos inicial creada al levantar el contenedor
     ports:
-      - "3308:3306"
+      - "3308:3306"  # Mapea el puerto 3308 del host al puerto 3306 del contenedor
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql  # Persistencia de datos en volumen
     networks:
       - backend_net
 
+  # Servicio de Base de Datos MongoDB
   mongo:
-    image: mongo:6.0
-    container_name: mongo_container
-    restart: always
+    image: mongo:6.0  # Imagen oficial de MongoDB versión 6.0
+    container_name: mongo_container  # Nombre del contenedor
+    restart: always  # Reinicia automáticamente si se detiene
     ports:
-      - "27017:27017"
+      - "27017:27017"  # Mapea el puerto 27017 del host al puerto 27017 del contenedor
     volumes:
-      - mongo_data:/data/db
+      - mongo_data:/data/db  # Persistencia de datos en volumen
     networks:
       - backend_net
 
+# Definición de la red personalizada para comunicación entre servicios
 networks:
   backend_net:
-    driver: bridge
+    driver: bridge  # Uso del driver de red puente por defecto
 
+# Volúmenes persistentes para bases de datos
 volumes:
   mysql_data:
   mongo_data:
