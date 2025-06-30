@@ -31,3 +31,15 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 git clone https://github.com/Petterouski/quito-go.git 
 cd quito-go
 ```
+
+### Paso 2: Construir la imagen Docker
+
+```bash
+docker-compose build
+```
+
+### Paso 3: Ejecutar el contenedor
+
+```bash
+docker-compose up
+```
